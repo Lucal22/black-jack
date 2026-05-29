@@ -10,4 +10,4 @@ Descrição do projeto aqui.
 
 - ✅ ...
 
-Veja o que precisará ser desenvolvido em SQL [aqui](https://github.com/Lucal22):
+Veja o que precisará ser desenvolvido em SQL [aqui](https://github.com/Lucal22/black-jack/blob/master/docs/sql.md):
