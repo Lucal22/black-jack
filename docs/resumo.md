@@ -5,7 +5,7 @@ Um projeto que simula uma partida de black jack para o trabalho de banco de dado
 **Recursos principais:**
 
 - ✅Veja o modelo conceitual do banco: [Modelo Conceitual](https://app.brmodeloweb.com/publicview/6a19a996f6f073bcc161cea1)
-- ✅Veja o que precisará ser desenvolvido em SQL [aqui](https://github.com/Lucal22/black-jack/blob/master/docs/sql.md):
+- ✅Veja o que precisará ser desenvolvido em SQL: [Comandos SQL](https://github.com/Lucal22/black-jack/blob/master/docs/sql.md).
 
 ## 📋 Visão Geral
 
@@ -37,7 +37,6 @@ Depois de receber as cartas, você escolhe o que fazer:
 
 - **Hit** → pedir mais uma carta.
 - **Stand** → parar e manter a mão atual.
-- **Double Down** → dobrar a aposta e receber apenas mais 1 carta.
 
 # Regras do dealer
 
