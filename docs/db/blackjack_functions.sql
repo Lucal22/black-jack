@@ -118,13 +118,28 @@ DELIMITER ;
 
 -- PROCEDURES --
 
+-- Cria jogador
+DELIMITER //
+CREATE PROCEDURE cria_jogador(-- rodar --
+IN p_login VARCHAR(20),
+IN p_senha VARCHAR(20)
+)
+BEGIN
+
+    insert into jogador(Login,senha)
+	values(p_login,p_senha);
+
+END //
+DELIMITER ;
+
 -- Inicia a Rodada
 DELIMITER //
-CREATE PROCEDURE inicia_rodada(
+CREATE PROCEDURE inicia_rodada( -- rodar --
 IN p_id_player INT
 )
 BEGIN
 	declare v_id_dealer INT;
+    declare v_id_rodada INT;
 	select d.ID_dealer into v_id_dealer from dealer as d ORDER BY RAND()
     LIMIT 1;
     
@@ -199,4 +214,6 @@ DELIMITER ;
 -- DROP TRIGGER IF EXISTS depois_inserir_carta;
 -- DROP TRIGGER IF EXISTS atualiza_carteira;
 -- DROP PROCEDURE IF EXISTS calcula_resultado;
+-- DROP PROCEDURE IF EXISTS cria_jogador;
+-- DROP PROCEDURE IF EXISTS inicia_rodada;
 -- DROP PROCEDURE IF EXISTS abortar_rodada;
