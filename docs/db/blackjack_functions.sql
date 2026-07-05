@@ -152,6 +152,8 @@ BEGIN
     call joga_carta(v_id_rodada,'Dealer');
     call joga_carta(v_id_rodada,'Jogador');
     call joga_carta(v_id_rodada,'Dealer');
+
+    select v_id_rodada as ID_rodada;
 END //
 DELIMITER ;
 
