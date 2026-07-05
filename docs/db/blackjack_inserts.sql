@@ -1,10 +1,10 @@
 -- Adicionando cartas
 INSERT INTO carta (nome, valor)
 VALUES
-('espadas_1',1),('espadas_2',2),('espadas_3',3),('espadas_4',4),('espadas_5',5),('espadas_6',6),('espadas_7',7),('espadas_8',8),('espadas_9',9),('espadas_10',10),('espadas_j',10),('espadas_q',10),('espadas_k',10),('espadas_as',1),
-('copas_1',1),('copas_2',2),('copas_3',3),('copas_4',4),('copas_5',5),('copas_6',6),('copas_7',7),('copas_8',8),('copas_9',9),('copas_j',10),('copas_q',10),('copas_k',10),('copas_as',1),
-('ouros_1',1),('ouros_2',2),('ouros_3',3),('ouros_4',4),('ouros_5',5),('ouros_6',6),('ouros_7',7),('ouros_8',8),('ouros_9',9),('ouros_10',10),('ouros_j',10),('ouros_q',10),('ouros_k',10),('ouros_as',1),
-('paus_1',1),('paus_2',2),('paus_3',3),('paus_4',4),('paus_5',5),('paus_6',6),('paus_7',7),('paus_8',8),('paus_9',9),('paus_10',10),('paus_j',10),('paus_q',10),('paus_k',10),('paus_as',1);
+('spade_1',1),('spade_2',2),('spade_3',3),('spade_4',4),('spade_5',5),('spade_6',6),('spade_7',7),('spade_8',8),('spade_9',9),('spade_10',10),('spade_jack',10),('spade_queen',10),('spade_king',10),
+('heart_1',1),('heart_2',2),('heart_3',3),('heart_4',4),('heart_5',5),('heart_6',6),('heart_7',7),('heart_8',8),('heart_9',9),('heart_jack',10),('heart_queen',10),('heart_king',10),
+('diamond_1',1),('diamond_2',2),('diamond_3',3),('diamond_4',4),('diamond_5',5),('diamond_6',6),('diamond_7',7),('diamond_8',8),('diamond_9',9),('diamond_10',10),('diamond_jack',10),('diamond_queen',10),('diamond_king',10),
+('club_1',1),('club_2',2),('club_3',3),('club_4',4),('club_5',5),('club_6',6),('club_7',7),('club_8',8),('club_9',9),('club_10',10),('club_jack',10),('club_queen',10),('club_king',10);
 select * from carta;
 
 -- adicionando items loja
