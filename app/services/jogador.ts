@@ -29,3 +29,17 @@ export async function handleHistorico(id: number) {
 
   return data.historico;
 }
+
+export async function handleRanking() {
+  const response = await fetch("../api/dados/ranking", {
+    method: "GET",
+  });
+  const data = await response.json();
+  if (!response.ok || !data.success) {
+    throw new Error(
+      data.error || "Não foi possível pegar os dados das partidas",
+    );
+  }
+
+  return data.ranking;
+}

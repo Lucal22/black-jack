@@ -65,7 +65,23 @@ export type Historicos = Historico[];
 export type HistoricosResponse = {
   success: boolean;
   message: string;
-  historico?: Historico[];
+  historico?: Historicos;
+};
+
+export type Ranking = {
+  jogador: string;
+  vitorias: number;
+  derrotas: number;
+  empates: number;
+  total_jogos: number;
+};
+
+export type Rankings = Ranking[];
+
+export type RankingsResponse = {
+  success: boolean;
+  message: string;
+  ranking?: Rankings;
 };
 
 export type Produtos = Produto[];
