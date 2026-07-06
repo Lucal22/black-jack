@@ -6,7 +6,6 @@ Um projeto que simula uma partida de black jack para o trabalho de banco de dado
 
 - ✅Veja o modelo conceitual do banco: [Modelo Conceitual](https://app.brmodeloweb.com/publicview/6a19a996f6f073bcc161cea1)
 - ✅Veja o modelo Lógico do banco: [Modelo Lógico](https://app.brmodeloweb.com/publicview/6a3aab990f42235251e4c9c1)
-- ✅Veja o que precisará ser desenvolvido em SQL: [Desenvolvimento SQL](https://github.com/Lucal22/black-jack/blob/master/docs/sql.md):
 
 # 📋 Visão Geral
 

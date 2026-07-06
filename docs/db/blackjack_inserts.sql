@@ -9,8 +9,7 @@ select * from carta;
 
 -- adicionando items loja
 INSERT INTO loja (produto, qtd, valor)
-values('100 creditos',10,100),('60 creditos',10,60),('200 creditos',10,200);
-select * from loja;
+values('100 creditos',100,100),('60 creditos',100,60),('200 creditos',100,200);
 
 -- adicionando jogadores e criando suas carteiras
 DELIMITER //
@@ -80,5 +79,3 @@ DELIMITER ;
 
 CALL gerar_jogadores_100();
 CALL gerar_dealers_100();
-
--- LPAD(FLOOR(RAND() * 10000), 4, '0')

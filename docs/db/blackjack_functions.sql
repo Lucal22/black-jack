@@ -227,6 +227,21 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE comprar_produto(
+IN p_id_jogador INT,
+IN p_id_produto INT
+)
+BEGIN
+	declare v_valor INT;
+    select valor into v_valor from loja where ID_produto = p_id_produto;
+	insert into carteira_loja(ID_produto, ID_carteira)
+    values(p_id_produto, p_id_jogador);
+    update loja set Qtd = Qtd -1 where ID_produto = p_id_produto;
+    update carteira set Saldo = Saldo + v_valor where ID_jogador = p_id_jogador;
+END //
+DELIMITER ;
+
 -- DROP TRIGGER IF EXISTS checa_saldo;
 -- DROP TRIGGER IF EXISTS criar_carteira;
 -- DROP TRIGGER IF EXISTS partida_andamento;
