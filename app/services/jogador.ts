@@ -12,3 +12,20 @@ export async function handlePlayerData(id: number) {
 
   return data.jogador;
 }
+
+export async function handleHistorico(id: number) {
+  const response = await fetch("../api/dados/historico", {
+    method: "POST",
+    body: JSON.stringify({
+      id: id,
+    }),
+  });
+  const data = await response.json();
+  if (!response.ok || !data.success) {
+    throw new Error(
+      data.error || "Não foi possível pegar os dados das partidas",
+    );
+  }
+
+  return data.historico;
+}

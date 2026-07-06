@@ -50,6 +50,24 @@ export type Produto = {
   Valor: number;
 };
 
+export type Historico = {
+  rodada: number;
+  jogador: string;
+  pontos_jogador: number;
+  dealer: string;
+  pontos_dealer: number;
+  resultado: string;
+  apostado: number;
+};
+
+export type Historicos = Historico[];
+
+export type HistoricosResponse = {
+  success: boolean;
+  message: string;
+  historico?: Historico[];
+};
+
 export type Produtos = Produto[];
 
 export type ProdutosResponse = {

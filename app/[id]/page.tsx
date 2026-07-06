@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { DBResponse, erroType, JogadorMenu } from "../context/interface";
 import { handleRound } from "../services/round";
 import { handlePlayerData } from "../services/jogador";
+import { XCircleIcon } from "@phosphor-icons/react";
 
 export default function Jogo() {
   const router = useRouter();
@@ -41,7 +42,13 @@ export default function Jogo() {
     }
   }
   return (
-    <div className="w-full">
+    <div className="w-full relative">
+      <button
+        className="absolute cursor-pointer top-0 left-2"
+        onClick={() => router.replace(`/`)}
+      >
+        <XCircleIcon size={32} />
+      </button>
       <nav>
         <ul className="flex w-full justify-around px-16 pb-4">
           <li>
@@ -51,14 +58,28 @@ export default function Jogo() {
           </li>
           <li className="cursor-pointer">
             <button
-              onClick={() => router.replace(`/${params.id}/loja`)}
+              onClick={() => router.push(`/${params.id}/loja`)}
               className="cursor-pointer"
             >
               Loja
             </button>
           </li>
-          <li className="cursor-pointer">Histórico</li>
-          <li className="cursor-pointer">Ranking</li>
+          <li className="cursor-pointer">
+            <button
+              onClick={() => router.push(`/${params.id}/historico`)}
+              className="cursor-pointer"
+            >
+              Histórico
+            </button>
+          </li>
+          <li className="cursor-pointer">
+            <button
+              onClick={() => router.push(`/${params.id}/ranking`)}
+              className="cursor-pointer"
+            >
+              Ranking
+            </button>
+          </li>
         </ul>
         {error && (
           <div className="bg-red-500 w-fit text-white p-2 rounded">{error}</div>
