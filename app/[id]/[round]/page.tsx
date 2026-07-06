@@ -178,9 +178,9 @@ export default function Jogo() {
               setDisabled(true);
               handleCartaDealer();
             }}
-            className="flex w-10 h-10 bg-red-300 items-center justify-center border-2 border-gray-700 rounded-full cursor-pointer"
+            className="flex w-12 h-12 bg-red-300 items-center justify-center border-2 border-gray-700 rounded-full cursor-pointer"
           >
-            <HandPalmIcon color="red" size={32} />
+            <HandPalmIcon color="red" size={40} />
           </button>
           <button
             disabled={disabled2x || resultado != "Andamento"}
@@ -188,7 +188,7 @@ export default function Jogo() {
               setDisabled2x(true);
               dobrarAposta();
             }}
-            className="flex w-10 h-10 bg-yellow-300 items-center justify-center border-2 border-gray-700 rounded-full cursor-pointer"
+            className="flex w-12 h-12 bg-yellow-300 items-center justify-center border-2 border-gray-700 rounded-full cursor-pointer text-base font-semibold"
           >
             2X
           </button>
@@ -198,9 +198,9 @@ export default function Jogo() {
               setDisabled(true);
               handleNovaCarta("Jogador");
             }}
-            className="flex w-10 h-10 bg-green-300 items-center  justify-center border-2 border-gray-700 rounded-full cursor-pointer"
+            className="flex w-12 h-12 bg-green-300 items-center  justify-center border-2 border-gray-700 rounded-full cursor-pointer"
           >
-            <CardsThreeIcon color="green" size={32} />
+            <CardsThreeIcon color="green" size={40} />
           </button>
         </div>
         <div className="w-full flex flex-col justify-center items-center">

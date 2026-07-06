@@ -8,6 +8,7 @@ import { DBResponse, erroType, JogadorMenu } from "../context/interface";
 import { handleRound } from "../services/round";
 import { handlePlayerData } from "../services/jogador";
 import { XCircleIcon } from "@phosphor-icons/react";
+import Card from "../components/Card";
 
 export default function Jogo() {
   const router = useRouter();
@@ -84,9 +85,15 @@ export default function Jogo() {
         {error && (
           <div className="bg-red-500 w-fit text-white p-2 rounded">{error}</div>
         )}
-      </nav>
-      <p>Nome: {player?.login}</p>
-      <p>Saldo: {player?.saldo}</p>
+      </nav>{" "}
+      <div className="flex justify-around">
+        <p>Nome: {player?.login}</p>
+        <p>Saldo: R$ {player?.saldo}</p>
+      </div>
+      <div className="flex justify-around">
+        <Card key={1} nome="joker_black" />
+        <Card key={3} nome="joker_red" />
+      </div>
     </div>
   );
 }

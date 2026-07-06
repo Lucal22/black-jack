@@ -23,7 +23,7 @@ export default function Historico() {
   }, [params.id]);
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-auto historico-scroll">
       {error && (
         <div className="bg-red-500 w-fit text-white p-2 rounded">{error}</div>
       )}

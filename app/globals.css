@@ -1,26 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;500;700&display=swap");
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --casino-felt: #0b3b2e; /* deep green felt */
+  --casino-felt-dark: #06261a;
+  --casino-foreground: #f6f0e6; /* warm off-white */
+  --casino-gold: #d4af37;
+  --casino-red: #c62828;
+  --casino-shadow: rgba(0, 0, 0, 0.6);
+  --casino-accent: linear-gradient(180deg, #ffd66b, #d4af37);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-2: rgba(0, 0, 0, 0.25);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/*@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}*/
-
+/* Base */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+}
+body {
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(0, 0, 0, 0.12), transparent),
+    linear-gradient(180deg, var(--casino-felt), var(--casino-felt-dark));
+  color: var(--casino-foreground);
+  font-family:
+    Montserrat,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* Force single theme: keep Tailwind light bg utilities transparent so body shows */
+.bg-zinc-50,
+.bg-white {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Page container: subtle inner glow like casino lights */
+main,
+.container {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), transparent);
+}
+
+/* Header */
+header {
+  background: transparent;
+}
+header h1 {
+  font-family: Cinzel, serif;
+  color: var(--casino-gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow:
+    0 2px 0 var(--casino-shadow),
+    0 6px 18px rgba(212, 175, 55, 0.12);
+  font-size: 2.25rem;
+}
+
+/* Card images (playing cards) - add subtle border and shadow */
+img[src*="/assets/cards/"] {
+  border-radius: 8px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+/* Inputs and form controls */
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(0, 0, 0, 0.08)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--casino-foreground);
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(212, 175, 55, 0.9);
+  box-shadow:
+    0 0 12px rgba(212, 175, 55, 0.12),
+    0 6px 18px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Buttons - override common Tailwind bg-blue classes to keep markup unchanged */
+.bg-blue-600,
+button,
+input[type="submit"] {
+  background: var(--casino-accent);
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.6),
+    0 2px 0 rgba(255, 255, 255, 0.03) inset;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+.bg-blue-600:hover,
+button:hover,
+input[type="submit"]:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+.bg-blue-700,
+.bg-blue-600:active,
+button:active {
+  transform: scale(0.99);
+}
+
+/* Error box styling */
+.bg-red-500 {
+  background: linear-gradient(180deg, #f66, #c62828);
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(198, 40, 40, 0.2);
+}
+
+/* Tables, lists and panels */
+.panel,
+.card,
+.box {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(0, 0, 0, 0.12)
+  );
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+/* Small decorative lights bar for headers/nav (pure CSS) */
+.casino-lights {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.casino-lights::before {
+  content: "";
+}
+.casino-lights > span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+.casino-lights > span:nth-child(odd) {
+  background: var(--casino-gold);
+}
+.casino-lights > span:nth-child(even) {
+  background: var(--casino-red);
+}
+
+/* Utility tweaks to keep layout readable */
+a {
+  color: var(--casino-gold);
+}
+p,
+li,
+label {
+  color: rgba(246, 240, 230, 0.95);
+}
+
+/* Make images slightly sharper on dark backgrounds */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Historico table styling */
+/* Targets the existing table markup (.w-full.border-collapse) used in the Historico page. */
+table.w-full.border-collapse {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+  color: var(--casino-foreground);
+}
+table.w-full.border-collapse thead tr {
+  background: rgba(255, 255, 255, 0.02);
+}
+table.w-full.border-collapse th {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--casino-foreground);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+table.w-full.border-collapse td {
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Hover effect for history rows (non-header) */
+
+/* Make result cells (Resultado) more prominent */
+table.w-full.border-collapse td:nth-child(6) {
+  text-align: center;
+  font-weight: 600;
+  color: var(--casino-gold);
+}
+
+/* Scroll container and hover styles specific to Historico page */
+.historico-scroll {
+  /* Fixed visible area: header + 10 rows (approx). */
+  max-height: 536px; /* ~56px header + 10 * 48px rows */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.historico-scroll table.w-full.border-collapse tbody tr {
+  transition:
+    background 120ms ease,
+    transform 80ms ease,
+    box-shadow 120ms ease;
+  height: 48px; /* consistent row height so 13 rows fit into container */
+}
+.historico-scroll table.w-full.border-collapse tbody tr:hover {
+  background: rgba(212, 175, 55, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  cursor: default;
+}
+.historico-scroll table.w-full.border-collapse {
+  table-layout: fixed;
+}
+.historico-scroll table.w-full.border-collapse td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
