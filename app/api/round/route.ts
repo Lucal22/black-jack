@@ -14,20 +14,20 @@ export async function POST(request: Request) {
     const connection = await mysql.createConnection(connectionParams);
 
     const myQuery = `
-    call iniciar_rodada(?)
+    call inicia_rodada(?)
   `;
     // create a query to fetch data
     const [rows] = await connection.execute(myQuery, [id]);
 
     await connection.end();
     // Checa se jogador já existe e faz o login
-    const rodada = rows as Rodada[];
-    if (rodada.length > 0) {
+    const rodada = rows as Rodada[][];
+    if (rodada[0].length > 0) {
       // retorna ID do jogador logado
       return NextResponse.json({
         success: true,
         message: "Rodada criada com sucesso",
-        id: rodada[0].ID_rodada,
+        id: rodada[0][0].ID_rodada,
       } as DBResponse);
     }
     return NextResponse.json({

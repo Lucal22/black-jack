@@ -210,6 +210,15 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE dobrar_aposta(
+IN p_id_rodada INT
+)
+BEGIN
+	update rodada set valor_aposta = 40 where id_rodada = p_id_rodada and resultado = 'Andamento';
+END //
+DELIMITER ;
+
 -- DROP TRIGGER IF EXISTS checa_saldo;
 -- DROP TRIGGER IF EXISTS criar_carteira;
 -- DROP TRIGGER IF EXISTS partida_andamento;

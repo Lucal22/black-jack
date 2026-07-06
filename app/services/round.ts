@@ -1,8 +1,6 @@
 import { DBResponse } from "../context/interface";
 
-export default async function handleRound(
-  jogadorId: number,
-): Promise<DBResponse> {
+export async function handleRound(jogadorId: number): Promise<DBResponse> {
   const response = await fetch("../api/round", {
     method: "POST",
     body: JSON.stringify({
@@ -11,4 +9,22 @@ export default async function handleRound(
   });
   const data = await response.json();
   return data;
+}
+
+export async function handleEncerrarRound(jogadorId: number) {
+  await fetch("../api/round/encerrar", {
+    method: "POST",
+    body: JSON.stringify({
+      id: jogadorId,
+    }),
+  });
+}
+
+export async function handleDobrarAposta(jogadorId: number) {
+  await fetch("../api/round/dobrar", {
+    method: "POST",
+    body: JSON.stringify({
+      id: jogadorId,
+    }),
+  });
 }

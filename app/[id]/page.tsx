@@ -1,17 +1,19 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { DBResponse } from "../context/interface";
-import handleRound from "../services/round";
+import { handleRound } from "../services/round";
 
-export default function Jogo({ params }: { params: { id: number } }) {
+export default function Jogo() {
   const router = useRouter();
+  const params = useParams<{ id: string }>();
 
   const [error, setError] = useState<string | null>(null);
   async function handleButton() {
-    const r: DBResponse = await handleRound(params.id);
+    const r: DBResponse = await handleRound(parseInt(params.id));
 
     if (r.id !== -1) {
       router.replace(`/${params.id}/${r.id}`);
@@ -32,7 +34,9 @@ export default function Jogo({ params }: { params: { id: number } }) {
           <li className="cursor-pointer">Histórico</li>
           <li className="cursor-pointer">Ranking</li>
         </ul>
-        <h1>ID recebido: {params.id}</h1>
+        {error && (
+          <div className="bg-red-500 text-white p-2 rounded">{error}</div>
+        )}
       </nav>
     </>
   );
