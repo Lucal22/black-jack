@@ -31,3 +31,8 @@ export type CartasResponse = {
   message: string;
   cartas?: Cartas;
 };
+
+export type erroType = {
+  error: string;
+  returnStatus: number;
+};

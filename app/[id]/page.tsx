@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { DBResponse } from "../context/interface";
+import { DBResponse, erroType } from "../context/interface";
 import { handleRound } from "../services/round";
 
 export default function Jogo() {
@@ -14,11 +14,15 @@ export default function Jogo() {
   const [error, setError] = useState<string | null>(null);
   async function handleButton() {
     const r: DBResponse = await handleRound(parseInt(params.id));
-
-    if (r.id !== -1) {
-      router.replace(`/${params.id}/${r.id}`);
+    if (r.id != undefined) {
+      if (r.id !== -1) {
+        router.replace(`/${params.id}/${r.id}`);
+      } else {
+        setError(r.message);
+      }
     } else {
-      setError(r.message);
+      const msg = r as unknown as erroType;
+      setError(msg.error);
     }
   }
   return (
@@ -35,7 +39,7 @@ export default function Jogo() {
           <li className="cursor-pointer">Ranking</li>
         </ul>
         {error && (
-          <div className="bg-red-500 text-white p-2 rounded">{error}</div>
+          <div className="bg-red-500 w-fit text-white p-2 rounded">{error}</div>
         )}
       </nav>
     </>

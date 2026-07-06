@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const response = {
       error: (err as Error).message,
 
-      returnedStatus: 200,
+      returnedStatus: 400,
     };
 
     return NextResponse.json(response, { status: 200 });

@@ -21,10 +21,18 @@ export async function handleEncerrarRound(jogadorId: number) {
 }
 
 export async function handleDobrarAposta(jogadorId: number) {
-  await fetch("../api/round/dobrar", {
+  const response = await fetch("../api/round/dobrar", {
     method: "POST",
     body: JSON.stringify({
       id: jogadorId,
     }),
   });
+
+  const data = await response.json();
+
+  if (!response.ok || !data.success) {
+    throw new Error(data.error || "Não foi possível dobrar a aposta");
+  }
+
+  return data;
 }

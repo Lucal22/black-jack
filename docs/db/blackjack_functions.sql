@@ -15,7 +15,6 @@ BEGIN
 END //
 DELIMITER;
 
-
 -- Cria a carteira do jogador logo após a criação do mesmo.
 DELIMITER //
 CREATE TRIGGER criar_carteira
@@ -215,7 +214,16 @@ CREATE PROCEDURE dobrar_aposta(
 IN p_id_rodada INT
 )
 BEGIN
+	declare v_id_jogador INT;
+	declare v_saldo INT;
+    select id_jogador into v_id_jogador from rodada where id_rodada = p_id_rodada;
+    select saldo into v_saldo from carteira where id_jogador = v_id_jogador;
+    if v_saldo >= 40 then
 	update rodada set valor_aposta = 40 where id_rodada = p_id_rodada and resultado = 'Andamento';
+    else
+		signal sqlstate '45000'
+        set message_text = 'Saldo insuficiente';
+	end if;
 END //
 DELIMITER ;
 
@@ -228,3 +236,4 @@ DELIMITER ;
 -- DROP PROCEDURE IF EXISTS cria_jogador;
 -- DROP PROCEDURE IF EXISTS inicia_rodada;
 -- DROP PROCEDURE IF EXISTS abortar_rodada;
+-- DROP PROCEDURE IF EXISTS dobrar_aposta;

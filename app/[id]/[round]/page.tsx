@@ -8,7 +8,7 @@ import {
   ArrowFatRightIcon,
 } from "@phosphor-icons/react";
 
-import { Cartas, DBResponse } from "@/app/context/interface";
+import { Cartas, DBResponse, erroType } from "@/app/context/interface";
 import { handleCartas, handleCartasIniciais } from "@/app/services/carta";
 import { useEffect, useState } from "react";
 import Card from "@/app/components/Card";
@@ -62,12 +62,16 @@ export default function Jogo() {
   }, [round]);
 
   async function handleButton() {
-    const r: DBResponse = await handleRound(id);
-
-    if (r.id !== -1) {
-      router.replace(`/${id}/${r.id}`);
+    const r: DBResponse = await handleRound(parseInt(params.id));
+    if (r.id != undefined) {
+      if (r.id !== -1) {
+        router.replace(`/${id}/${r.id}`);
+      } else {
+        setError(r.message);
+      }
     } else {
-      setError(r.message);
+      const msg = r as unknown as erroType;
+      setError(msg.error);
     }
   }
 
@@ -82,9 +86,11 @@ export default function Jogo() {
       } else {
         setCartasDealer((prev) => [...prev, cartas[0]]);
       }
+      setDisabled(false);
       setResultado(cartas[0].resultado);
       return cartas[0].resultado;
     }
+    setDisabled(false);
     return "Andamento";
   }
 
@@ -92,8 +98,8 @@ export default function Jogo() {
     setDisabled(true);
     let res = resultado;
     while (res == "Andamento") {
-      await sleep(750);
       res = await handleNovaCarta("Dealer");
+      await sleep(750);
     }
     setDisabled(false);
   }
@@ -103,9 +109,14 @@ export default function Jogo() {
   }
 
   async function dobrarAposta() {
-    await handleDobrarAposta(round);
-    await handleNovaCarta("Jogador");
-    await handleCartaDealer();
+    try {
+      await handleDobrarAposta(round);
+      await handleNovaCarta("Jogador");
+      await sleep(750);
+      await handleCartaDealer();
+    } catch (error) {
+      setError((error as Error).message);
+    }
   }
 
   return (
@@ -149,10 +160,6 @@ export default function Jogo() {
           <p className="w-100 h-0.5 border-[0.5px] border-gray-400"></p>
         </div>
       )}
-      {error && (
-        <div className="bg-red-500 text-white p-2 rounded">{error}</div>
-      )}
-
       <div>
         <div className="flex w-full justify-center ">
           <p className="flex w-10 h-10 items-center justify-center border-2 border-gray-700 rounded-full">
@@ -198,6 +205,9 @@ export default function Jogo() {
         </div>
         <div className="w-full flex flex-col justify-center items-center">
           <p className="">Jogador</p>
+          {error && (
+            <div className="bg-red-500 text-white p-2 rounded">{error}</div>
+          )}
         </div>
       </div>
     </div>

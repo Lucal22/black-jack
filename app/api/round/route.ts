@@ -20,10 +20,10 @@ export async function POST(request: Request) {
     const [rows] = await connection.execute(myQuery, [id]);
 
     await connection.end();
-    // Checa se jogador já existe e faz o login
+
     const rodada = rows as Rodada[][];
-    if (rodada[0].length > 0) {
-      // retorna ID do jogador logado
+
+    if (rodada[0].length > 0 || rodada[0][0].ID_rodada != undefined) {
       return NextResponse.json({
         success: true,
         message: "Rodada criada com sucesso",
