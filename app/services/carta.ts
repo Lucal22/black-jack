@@ -25,5 +25,9 @@ export async function handleCartas(
     }),
   });
   const data = await response.json();
+  if (!response.ok || !data.success) {
+    throw new Error(data.error || "Não foi possível adicionar a carta");
+  }
+
   return data;
 }
