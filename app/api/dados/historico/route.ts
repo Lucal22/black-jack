@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     const connection = await mysql.createConnection(connectionParams);
 
     const myQuery = `
-    select rodada, jogador, pontos_jogador, pontos_dealer, resultado, apostado
+    select rodada, jogador, pontos_jogador, dealer, pontos_dealer, resultado, apostado
      from vw_historico_jogador 
      where ID_jogador = ?
      order by rodada asc;

@@ -31,26 +31,26 @@ export default function Historico() {
         <table className="w-full border-collapse">
           <thead>
             <tr className="border-b font-bold">
-              <th className="p-2 text-left">Rodada</th>
-              <th className="p-2 text-left">Jogador</th>
+              <th className="p-2 text-center">Rodada</th>
+              <th className="p-2 text-center">Jogador</th>
               <th className="p-2 text-center">Pts Jogador</th>
-              <th className="p-2 text-left">Dealer</th>
+              <th className="p-2 text-center">Dealer</th>
               <th className="p-2 text-center">Pts Dealer</th>
               <th className="p-2 text-center">Resultado</th>
-              <th className="p-2 text-right">Apostado</th>
+              <th className="p-2 text-center">Apostado</th>
             </tr>
           </thead>
 
           <tbody>
             {historico.map((h) => (
               <tr key={h.rodada} className="border-b">
-                <td className="p-2">{h.rodada}</td>
-                <td className="p-2">{h.jogador}</td>
+                <td className="p-2 text-center">{h.rodada}</td>
+                <td className="p-2 text-center">{h.jogador}</td>
                 <td className="p-2 text-center">{h.pontos_jogador}</td>
-                <td className="p-2">{h.dealer}</td>
+                <td className="p-2 text-center">{h.dealer}</td>
                 <td className="p-2 text-center">{h.pontos_dealer}</td>
                 <td className="p-2 text-center">{h.resultado}</td>
-                <td className="p-2 text-right">R$ {h.apostado}</td>
+                <td className="p-2 text-center">R$ {h.apostado}</td>
               </tr>
             ))}
           </tbody>
