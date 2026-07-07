@@ -139,6 +139,44 @@ button:active {
   transform: scale(0.99);
 }
 
+/* Close (X) button - red circular style */
+button.btn-close {
+  background: linear-gradient(180deg, #ff7b7b, #c62828);
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.25rem;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8px 20px rgba(198, 40, 40, 0.25);
+}
+button.btn-close:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+/* Close (X) button - red circular style */
+button.btn-close {
+  background: linear-gradient(180deg, #ff7b7b, #c62828);
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.25rem;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8px 20px rgba(198, 40, 40, 0.25);
+}
+button.btn-close:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
 /* Error box styling */
 .bg-red-500 {
   background: linear-gradient(180deg, #f66, #c62828);

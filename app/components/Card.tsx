@@ -11,7 +11,7 @@ export default function Card({ nome }: CardType) {
         src={`/assets/cards/${nome}.png`}
         alt={`${nome}`}
         width={100}
-        height={220}
+        height={145}
       />
     </>
   );

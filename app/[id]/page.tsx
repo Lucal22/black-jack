@@ -45,10 +45,10 @@ export default function Jogo() {
   return (
     <div className="w-full relative">
       <button
-        className="absolute cursor-pointer top-0 left-2"
+        className="absolute cursor-pointer top-0 left-2 btn-close"
         onClick={() => router.replace(`/`)}
       >
-        <XCircleIcon size={32} />
+        <XCircleIcon size={24} color="#fff" />
       </button>
       <nav>
         <ul className="flex w-full justify-around px-16 pb-4">

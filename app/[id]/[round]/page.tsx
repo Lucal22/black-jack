@@ -120,12 +120,12 @@ export default function Jogo() {
   }
 
   return (
-    <div className="flex flex-col relative gap-8 justify-center items-center w-full">
+    <div className="flex flex-col relative gap-4 justify-center items-center w-full">
       <button
-        className="absolute cursor-pointer top-2 left-2"
+        className="absolute cursor-pointer top-2 left-2 btn-close"
         onClick={() => encerraRodada()}
       >
-        <XCircleIcon size={32} />
+        <XCircleIcon size={24} color="#fff" />
       </button>
       <div>
         <div className="w-full flex flex-col justify-center items-center pt-5">
@@ -145,19 +145,19 @@ export default function Jogo() {
       {resultado != "Andamento" ? (
         <div className="flex items-center gap-4">
           <button
-            className=" cursor-pointer "
+            className="cursor-pointer btn-close"
             onClick={() => router.replace(`/${id}`)}
           >
-            <XCircleIcon size={32} />
+            <XCircleIcon size={24} color="#fff" />
           </button>
           <div>{resultado}</div>
           <button className=" cursor-pointer " onClick={() => handleButton()}>
-            <ArrowFatRightIcon size={32} />
+            <ArrowFatRightIcon size={24} />
           </button>
         </div>
       ) : (
         <div>
-          <p className="w-100 h-0.5 border-[0.5px] border-gray-400"></p>
+          <p className="w-100 h-0.5 border-[0.5px] m-5 border-gray-400"></p>
         </div>
       )}
       <div>
