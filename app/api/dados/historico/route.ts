@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     select rodada, jogador, pontos_jogador, pontos_dealer, resultado, apostado
      from vw_historico_jogador 
      where ID_jogador = ?
+     order by rodada asc;
   `;
     // create a query to fetch data
     const [rows] = await connection.execute(myQuery, [id]);
