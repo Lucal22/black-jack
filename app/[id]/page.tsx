@@ -17,6 +17,11 @@ export default function Jogo() {
   const [player, setPlayer] = useState<JogadorMenu>();
   const [error, setError] = useState<string | null>(null);
 
+  const saldoFormatado =
+    typeof player?.saldo === "number"
+      ? player.saldo.toLocaleString("pt-BR")
+      : (player?.saldo ?? "0,00");
+
   useEffect(() => {
     async function carregarJogador() {
       try {
@@ -86,13 +91,15 @@ export default function Jogo() {
           <div className="bg-red-500 w-fit text-white p-2 rounded">{error}</div>
         )}
       </nav>{" "}
-      <div className="flex justify-around">
-        <p>Nome: {player?.login}</p>
-        <p>Saldo: R$ {player?.saldo}</p>
-      </div>
-      <div className="flex justify-around">
-        <Card key={1} nome="joker_black" />
-        <Card key={3} nome="joker_red" />
+      <div className="flex justify-between items-center rounded-xl border border-white/10 bg-white/10 px-6 py-3 text-sm text-white shadow-sm backdrop-blur-sm">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold">Jogador:</span>
+          <span>{player?.login ?? "Carregando..."}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-semibold">Saldo:</span>
+          <span>R$ {saldoFormatado}</span>
+        </div>
       </div>
     </div>
   );
