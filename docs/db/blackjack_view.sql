@@ -36,10 +36,10 @@ create view vw_historico_jogador as
 		r.resultado;
     
 
-select * from vw_historico;
-select * from vw_historico_jogador;
-select * from vw_ranking_jogadores;
-select * from vw_historico_jogador where resultado = "Vitória";
+-- select * from vw_historico;
+-- select * from vw_historico_jogador;
+-- select * from vw_ranking_jogadores;
+-- select * from vw_historico_jogador where resultado = "Vitória";
 
  -- drop view vw_historico_jogador;
 -- drop view vw_ranking_jogadores;
